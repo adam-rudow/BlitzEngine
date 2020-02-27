@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{403561c2-c098-4233-9a61-a514dbdd9bea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FW1FontWrapper">
+      <UniqueIdentifier>{d1f5c769-ee01-4c60-a253-f334017f41db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FW1FontWrapper">
+      <UniqueIdentifier>{dc37c8b1-f5aa-4b75-ae78-683261c8a110}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utils">
+      <UniqueIdentifier>{de3c186b-d7c8-4858-b77c-11ddebd7f1e6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CameraComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Profiler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\BoundingPrimitives.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\PreCompiledHeader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CameraComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Profiler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\BoundingPrimitives.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\lighthelper.fx">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\Constants.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\Fur.fx">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\BasicMesh.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\Phong.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\Simple.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\DeferredLightingPass.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\BasicQuad.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\shadowmaphelper.fx">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\StdMesh_ZOnly.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\Voxelization_PS.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\Voxelization_Expand_GS.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\StdMesh_Voxelization_VS.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\VoxelGI_Structs.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\Std_Structs.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\VoxelGrid_Clear_CS.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\Voxelization_Debug_PS.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\VPL_Create_GS.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\VPL_Create_PS.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\VPL_Create_VS.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\VoxelGrid_VPL_Propogation_CS.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\VoxelGI_ApplyIndirectLight_PS.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\Random.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\StdParticle_Spawn_CS.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\StdParticle_Update_CS.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\PointToSprite_GS.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\StdParticle_PS.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\StdParticle_VS.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\DetailedMesh_ZOnly.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\DetailedMesh_ShadowedPhong.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\DetailedMesh_Structs.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\DetailedMesh_Voxelization_VS.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+  </ItemGroup>
+</Project>

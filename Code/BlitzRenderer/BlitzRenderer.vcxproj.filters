@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{457eb5be-fbec-4374-852b-ee273f297c62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\FW1FontWrapper">
+      <UniqueIdentifier>{87f3d1f2-f8a1-4bc3-ac2f-5e932a915baa}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\AlphaBlendStateManager.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DepthStencilStateManager.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DirectionalLightComponent.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DrawComponent.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Effect.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\EffectManager.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Emitter.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GraphicsDriver.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\LightComponent.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Material.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MaterialSet.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mesh.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MeshComponent.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ParticleCPU.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ParticleSystem.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ParticleSystemManager.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\PointLightComponent.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\RasterizerStateManager.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ResourceBufferGPU.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SamplerState.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SpotLightComponent.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Texture.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VertexData.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FW1FontWrapper\CFW1ColorRGBA.cpp">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FW1FontWrapper\CFW1ColorRGBAInterface.cpp">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FW1FontWrapper\CFW1DWriteRenderTarget.cpp">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FW1FontWrapper\CFW1DWriteRenderTargetInterface.cpp">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FW1FontWrapper\CFW1Factory.cpp">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FW1FontWrapper\CFW1FactoryInterface.cpp">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FW1FontWrapper\CFW1FontWrapper.cpp">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FW1FontWrapper\CFW1FontWrapperInterface.cpp">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FW1FontWrapper\CFW1GlyphAtlas.cpp">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FW1FontWrapper\CFW1GlyphAtlasInterface.cpp">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FW1FontWrapper\CFW1GlyphProvider.cpp">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FW1FontWrapper\CFW1GlyphProviderInterface.cpp">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FW1FontWrapper\CFW1GlyphRenderStates.cpp">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FW1FontWrapper\CFW1GlyphRenderStatesInterface.cpp">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FW1FontWrapper\CFW1GlyphSheet.cpp">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FW1FontWrapper\CFW1GlyphSheetInterface.cpp">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FW1FontWrapper\CFW1GlyphVertexDrawer.cpp">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FW1FontWrapper\CFW1GlyphVertexDrawerInterface.cpp">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FW1FontWrapper\CFW1StateSaver.cpp">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FW1FontWrapper\CFW1TextGeometry.cpp">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FW1FontWrapper\CFW1TextGeometryInterface.cpp">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FW1FontWrapper\CFW1TextRenderer.cpp">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FW1FontWrapper\CFW1TextRendererInterface.cpp">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FW1FontWrapper\FW1FontWrapper.cpp">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FW1FontWrapper\FW1Precompiled.cpp">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VoxelGrid.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GPUProfiler.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\AlphaBlendStateManager.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DepthStencilStateManager.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DirectionalLightComponent.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DrawComponent.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Effect.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\EffectManager.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Emitter.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GraphicsDriver.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\LightComponent.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Material.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MaterialSet.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mesh.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MeshComponent.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ParticleCPU.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ParticleSystem.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ParticleSystemManager.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ParticleSystemTypesEnum.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PointLightComponent.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\RasterizerStateManager.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\RenderUtility.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ResourceBufferGPU.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SamplerState.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SpotLightComponent.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Texture.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VertexData.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FW1FontWrapper\CFW1ColorRGBA.h">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FW1FontWrapper\CFW1DWriteRenderTarget.h">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FW1FontWrapper\CFW1Factory.h">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FW1FontWrapper\CFW1FontWrapper.h">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FW1FontWrapper\CFW1GlyphAtlas.h">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FW1FontWrapper\CFW1GlyphProvider.h">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FW1FontWrapper\CFW1GlyphRenderStates.h">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FW1FontWrapper\CFW1GlyphSheet.h">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FW1FontWrapper\CFW1GlyphVertexDrawer.h">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FW1FontWrapper\CFW1Object.h">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FW1FontWrapper\CFW1StateSaver.h">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FW1FontWrapper\CFW1TextGeometry.h">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FW1FontWrapper\CFW1TextRenderer.h">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FW1FontWrapper\FW1CompileSettings.h">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FW1FontWrapper\FW1FontWrapper.h">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FW1FontWrapper\FW1Precompiled.h">
+      <Filter>Source\FW1FontWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VoxelGrid.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GPUProfiler.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\RendererMacros.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

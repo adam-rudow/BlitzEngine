@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="AssetProcessor|Win32">
+      <Configuration>AssetProcessor</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="AssetProcessor|x64">
+      <Configuration>AssetProcessor</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\AlphaBlendStateManager.cpp" />
+    <ClCompile Include="Source\DepthStencilStateManager.cpp" />
+    <ClCompile Include="Source\DirectionalLightComponent.cpp" />
+    <ClCompile Include="Source\DrawComponent.cpp" />
+    <ClCompile Include="Source\Effect.cpp" />
+    <ClCompile Include="Source\EffectManager.cpp" />
+    <ClCompile Include="Source\Emitter.cpp" />
+    <ClCompile Include="Source\FW1FontWrapper\CFW1ColorRGBA.cpp" />
+    <ClCompile Include="Source\FW1FontWrapper\CFW1ColorRGBAInterface.cpp" />
+    <ClCompile Include="Source\FW1FontWrapper\CFW1DWriteRenderTarget.cpp" />
+    <ClCompile Include="Source\FW1FontWrapper\CFW1DWriteRenderTargetInterface.cpp" />
+    <ClCompile Include="Source\FW1FontWrapper\CFW1Factory.cpp" />
+    <ClCompile Include="Source\FW1FontWrapper\CFW1FactoryInterface.cpp" />
+    <ClCompile Include="Source\FW1FontWrapper\CFW1FontWrapper.cpp" />
+    <ClCompile Include="Source\FW1FontWrapper\CFW1FontWrapperInterface.cpp" />
+    <ClCompile Include="Source\FW1FontWrapper\CFW1GlyphAtlas.cpp" />
+    <ClCompile Include="Source\FW1FontWrapper\CFW1GlyphAtlasInterface.cpp" />
+    <ClCompile Include="Source\FW1FontWrapper\CFW1GlyphProvider.cpp" />
+    <ClCompile Include="Source\FW1FontWrapper\CFW1GlyphProviderInterface.cpp" />
+    <ClCompile Include="Source\FW1FontWrapper\CFW1GlyphRenderStates.cpp" />
+    <ClCompile Include="Source\FW1FontWrapper\CFW1GlyphRenderStatesInterface.cpp" />
+    <ClCompile Include="Source\FW1FontWrapper\CFW1GlyphSheet.cpp" />
+    <ClCompile Include="Source\FW1FontWrapper\CFW1GlyphSheetInterface.cpp" />
+    <ClCompile Include="Source\FW1FontWrapper\CFW1GlyphVertexDrawer.cpp" />
+    <ClCompile Include="Source\FW1FontWrapper\CFW1GlyphVertexDrawerInterface.cpp" />
+    <ClCompile Include="Source\FW1FontWrapper\CFW1StateSaver.cpp" />
+    <ClCompile Include="Source\FW1FontWrapper\CFW1TextGeometry.cpp" />
+    <ClCompile Include="Source\FW1FontWrapper\CFW1TextGeometryInterface.cpp" />
+    <ClCompile Include="Source\FW1FontWrapper\CFW1TextRenderer.cpp" />
+    <ClCompile Include="Source\FW1FontWrapper\CFW1TextRendererInterface.cpp" />
+    <ClCompile Include="Source\FW1FontWrapper\FW1FontWrapper.cpp" />
+    <ClCompile Include="Source\FW1FontWrapper\FW1Precompiled.cpp" />
+    <ClCompile Include="Source\GPUProfiler.cpp" />
+    <ClCompile Include="Source\GraphicsDriver.cpp" />
+    <ClCompile Include="Source\LightComponent.cpp" />
+    <ClCompile Include="Source\Material.cpp" />
+    <ClCompile Include="Source\MaterialSet.cpp" />
+    <ClCompile Include="Source\Mesh.cpp" />
+    <ClCompile Include="Source\MeshComponent.cpp" />
+    <ClCompile Include="Source\ParticleCPU.cpp" />
+    <ClCompile Include="Source\ParticleSystem.cpp" />
+    <ClCompile Include="Source\ParticleSystemManager.cpp" />
+    <ClCompile Include="Source\PointLightComponent.cpp" />
+    <ClCompile Include="Source\RasterizerStateManager.cpp" />
+    <ClCompile Include="Source\Renderer.cpp" />
+    <ClCompile Include="Source\ResourceBufferGPU.cpp" />
+    <ClCompile Include="Source\SamplerState.cpp" />
+    <ClCompile Include="Source\SpotLightComponent.cpp" />
+    <ClCompile Include="Source\Texture.cpp" />
+    <ClCompile Include="Source\VertexData.cpp" />
+    <ClCompile Include="Source\VoxelGrid.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\AlphaBlendStateManager.h" />
+    <ClInclude Include="Source\DepthStencilStateManager.h" />
+    <ClInclude Include="Source\DirectionalLightComponent.h" />
+    <ClInclude Include="Source\DrawComponent.h" />
+    <ClInclude Include="Source\Effect.h" />
+    <ClInclude Include="Source\EffectManager.h" />
+    <ClInclude Include="Source\Emitter.h" />
+    <ClInclude Include="Source\FW1FontWrapper\CFW1ColorRGBA.h" />
+    <ClInclude Include="Source\FW1FontWrapper\CFW1DWriteRenderTarget.h" />
+    <ClInclude Include="Source\FW1FontWrapper\CFW1Factory.h" />
+    <ClInclude Include="Source\FW1FontWrapper\CFW1FontWrapper.h" />
+    <ClInclude Include="Source\FW1FontWrapper\CFW1GlyphAtlas.h" />
+    <ClInclude Include="Source\FW1FontWrapper\CFW1GlyphProvider.h" />
+    <ClInclude Include="Source\FW1FontWrapper\CFW1GlyphRenderStates.h" />
+    <ClInclude Include="Source\FW1FontWrapper\CFW1GlyphSheet.h" />
+    <ClInclude Include="Source\FW1FontWrapper\CFW1GlyphVertexDrawer.h" />
+    <ClInclude Include="Source\FW1FontWrapper\CFW1Object.h" />
+    <ClInclude Include="Source\FW1FontWrapper\CFW1StateSaver.h" />
+    <ClInclude Include="Source\FW1FontWrapper\CFW1TextGeometry.h" />
+    <ClInclude Include="Source\FW1FontWrapper\CFW1TextRenderer.h" />
+    <ClInclude Include="Source\FW1FontWrapper\FW1CompileSettings.h" />
+    <ClInclude Include="Source\FW1FontWrapper\FW1FontWrapper.h" />
+    <ClInclude Include="Source\FW1FontWrapper\FW1Precompiled.h" />
+    <ClInclude Include="Source\GPUProfiler.h" />
+    <ClInclude Include="Source\GraphicsDriver.h" />
+    <ClInclude Include="Source\LightComponent.h" />
+    <ClInclude Include="Source\Material.h" />
+    <ClInclude Include="Source\MaterialSet.h" />
+    <ClInclude Include="Source\Mesh.h" />
+    <ClInclude Include="Source\MeshComponent.h" />
+    <ClInclude Include="Source\ParticleCPU.h" />
+    <ClInclude Include="Source\ParticleSystem.h" />
+    <ClInclude Include="Source\ParticleSystemManager.h" />
+    <ClInclude Include="Source\ParticleSystemTypesEnum.h" />
+    <ClInclude Include="Source\PointLightComponent.h" />
+    <ClInclude Include="Source\RasterizerStateManager.h" />
+    <ClInclude Include="Source\Renderer.h" />
+    <ClInclude Include="Source\RendererMacros.h" />
+    <ClInclude Include="Source\RenderUtility.h" />
+    <ClInclude Include="Source\ResourceBufferGPU.h" />
+    <ClInclude Include="Source\SamplerState.h" />
+    <ClInclude Include="Source\SpotLightComponent.h" />
+    <ClInclude Include="Source\Texture.h" />
+    <ClInclude Include="Source\VertexData.h" />
+    <ClInclude Include="Source\VoxelGrid.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{4E1C1583-4DE5-47F9-BDC3-412042C00BE7}</ProjectGuid>
+    <RootNamespace>BlitzRenderer</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='AssetProcessor|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='AssetProcessor|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='AssetProcessor|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='AssetProcessor|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LibraryPath>$(VC_LibraryPath_x86);$(DXSDK_DIR)Lib\x86;$(SolutionDir)Binaries\$(Configuration);$(LibraryPath)</LibraryPath>
+    <IncludePath>$(WindowsSDK_IncludePath);$(DXSDK_DIR)include;$(SolutionDir)Code\BlitzCommon;$(SolutionDir)Code\BlitzSystem;$(SolutionDir)Code;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)Output\Binaries\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Output\Intermediate\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='AssetProcessor|Win32'">
+    <LibraryPath>$(VC_LibraryPath_x86);$(DXSDK_DIR)Lib\x86;$(SolutionDir)Code\BlitzCommon\$(Configuration);$(SolutionDir)Code\BlitzSystem\$(Configuration);$(SolutionDir)$(Configuration);$(LibraryPath)</LibraryPath>
+    <IncludePath>$(WindowsSDK_IncludePath);$(DXSDK_DIR)include;$(SolutionDir)Code\BlitzCommon;$(SolutionDir)Code\BlitzSystem;$(SolutionDir)Code;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)AssetProcessor\Binaries\</OutDir>
+    <IntDir>$(SolutionDir)AssetProcessor\Intermediate\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(VC_IncludePath);$(SolutionDir)DirectXBasic\DirectX\include;$(DXSDK_DIR)include;$(WindowsSDK_IncludePath);$(SolutionDir)Code\BlitzCommon;$(SolutionDir)Code\BlitzSystem;$(SolutionDir)Code</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x86);$(DXSDK_DIR)Lib\x86;$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
+    <OutDir>$(SolutionDir)Output\Binaries\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Output\Intermediate\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_RENDERERDLL;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>d3d11.lib;d3dx11.lib;BlitzCommon.lib;BlitzSystem.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='AssetProcessor|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_RENDERERDLL;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>d3d11.lib;d3dx11.lib;BlitzCommon.lib;BlitzSystem.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='AssetProcessor|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
