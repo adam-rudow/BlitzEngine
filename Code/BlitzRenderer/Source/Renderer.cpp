@@ -12,6 +12,7 @@
 #include "Utils/Utility.h"
 #include "Utils/AssertDbg.h"
 #include "System.h"
+#include "Application.h"
 
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
@@ -19,6 +20,13 @@ int Renderer::Window_Width	= GWindowWidth;
 int Renderer::Window_Height = GWindowHeight;
 
 //ImplSingleton(Renderer)
+
+IRenderer* ConstructRenderer(HINSTANCE hInstance, int nCmdShow)
+{
+	IRenderer::StaticConstruct<Renderer>();
+	return IRenderer::Instance();
+}
+
 
 Renderer::Renderer(/*Game& game*/)
 	///: mGame(game)
@@ -65,7 +73,7 @@ bool Renderer::Init(HINSTANCE hInstance, int nCmdShow)
 	mGraphicsDriver = GraphicsDriver::Instance();
 
 	HWND hWnd;
-	if (!System::Instance()->CreateGameWindow(hInstance, hWnd))
+	if (!Application::Instance()->CreateGameWindow(hInstance, hWnd))
 		DbgAssert(false, "Failed to create Game window!\n");
 
 	mGraphicsDriver->InitGraphics(hWnd);
@@ -390,8 +398,8 @@ void Renderer::UploadConstantBuffers()
 
 void Renderer::UploadPerFrameConstants()
 {
-	mFrameConsts.mFrameTime = static_cast<float>(System::Instance()->GetFrameTime());
-	mFrameConsts.mGameTime	= static_cast<float>(System::Instance()->GetSystemTime());
+	mFrameConsts.mFrameTime = static_cast<float>(Application::Instance()->GetFrameTime());
+	mFrameConsts.mGameTime	= static_cast<float>(Application::Instance()->GetSystemTime());
 
 	mGraphicsDriver->UploadBuffer(mFrameConstBuffer, (void*)&mFrameConsts, sizeof(PerFrameConstants));
 	mGraphicsDriver->SetConstantBuffer(mFrameConstBuffer, PerFrameSlot);

@@ -174,17 +174,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Application.cpp" />
     <ClCompile Include="Components\Component.cpp" />
     <ClCompile Include="extern.cpp" />
     <ClCompile Include="Game\InputManager.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Rendering\Texture.cpp" />
     <ClCompile Include="System.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Application.h" />
     <ClInclude Include="Components\Component.h" />
     <ClInclude Include="Game\IGame.h" />
     <ClInclude Include="Game\IInputManager.h" />
     <ClInclude Include="Game\InputManager.h" />
+    <ClInclude Include="Main.h" />
     <ClInclude Include="Rendering\IRenderer.h" />
     <ClInclude Include="Rendering\Texture.h" />
     <ClInclude Include="System.h" />

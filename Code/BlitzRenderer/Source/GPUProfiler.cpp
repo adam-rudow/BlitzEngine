@@ -3,6 +3,7 @@
 #include "Renderer.h"
 
 #include "BlitzSystem/System.h"
+#include "BlitzSystem/Application.h"
 
 //extern ID3D11Device * g_pDevice;
 //extern ID3D11DeviceContext * g_pContext;
@@ -186,7 +187,7 @@ void GpuProfiler::WaitForDataAndUpdate ()
 	}
 
 	++m_frameCountAvg;
-	if (System::Instance()->GetSystemTime() > m_tBeginAvg + 0.5f)
+	if (Application::Instance()->GetSystemTime() > m_tBeginAvg + 0.5f)
 	{
 		for (GTS gts = GTS_BeginFrame; gts < GTS_Max; gts = GTS(gts + 1))
 		{
@@ -195,7 +196,7 @@ void GpuProfiler::WaitForDataAndUpdate ()
 		}
 
 		m_frameCountAvg = 0;
-		m_tBeginAvg = S_CAST(float, System::Instance()->GetSystemTime());
+		m_tBeginAvg = S_CAST(float, Application::Instance()->GetSystemTime());
 	}
 }
 

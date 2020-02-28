@@ -1,4 +1,5 @@
 #include "System.h"
+#include "Application.h"
 #include "Game/IGame.h"
 #include "Game/IInputManager.h"
 #include "Rendering/IRenderer.h"
@@ -6,9 +7,11 @@
 //extern void ConstructInternalIGame();
 
 #ifdef _SYSTEMDLL
-ImplAbstractSingleton_Base(IGame)
+//ImplAbstractSingleton_Base(IGame)
 ImplAbstractSingleton_Base(IRenderer)
 ImplAbstractSingleton_Base(IInputManager)
+//ImplSingleton(Application)
+//ImplAbstractSingleton_Base(IApplication)
 /*IGame* IGame::sInstance = 0;										
 IGame* IGame::Instance() 
 { 

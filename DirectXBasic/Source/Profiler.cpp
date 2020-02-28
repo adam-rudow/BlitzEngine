@@ -4,6 +4,7 @@
 // Inter-Engine includes
 #include "Profiler.h"
 #include "BlitzSystem/System.h"
+#include "BlitzSystem/Application.h"
 //#include "Game.h"
 
 // Sibling/Children includes
@@ -42,12 +43,12 @@ double Profiler::QueryCPUFrameTime()
 	++mNumFramesSinceLog;
 
 	// Update averaged frameRate/Time every 0.5 seconds for readibility of onscreen text
-	if (System::Instance()->GetSystemTime() > mPrevLoggedGameTime + 0.5)
+	if (Application::Instance()->GetSystemTime() > mPrevLoggedGameTime + 0.5)
 	{
 		mCurrentAverageFrameTime = mCurTotalAvgFrameTime / S_CAST(double, mNumFramesSinceLog);
 		mCurTotalAvgFrameTime = 0;
 		mNumFramesSinceLog = 0;
-		mPrevLoggedGameTime = System::Instance()->GetSystemTime();
+		mPrevLoggedGameTime = Application::Instance()->GetSystemTime();
 	}
 
 	// Adjust frameTime average

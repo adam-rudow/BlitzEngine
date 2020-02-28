@@ -1,0 +1,7 @@
+BlitzEngine TODO:
+- Clean Folders
+- Rearrange binary folders
+- Cherno lessons (Entry Point, Logging, Premake(?))
+- Revamp Asset converter
+...
+- Renderer refactor for multithreading

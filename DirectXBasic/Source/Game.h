@@ -1,22 +1,22 @@
 #pragma once
 #include "BlitzSystem/Game/IGame.h"
 #include "BlitzSystem/System.h"
+#include "BlitzSystem/Application.h"
 #include "BlitzSystem/Rendering/IRenderer.h"
 
 #include "CameraComponent.h"
 
 
-class Game : public IGame
+class FeatureTestGame : public Application
 {
 
 public:
-	Game();
-	~Game();
+	FeatureTestGame();
+	~FeatureTestGame();
 
-	bool Init()		override;
-	void Quit()		override;
+	void Init_Internal()		override;
 
-	void LoadGame() override;
+	void LoadGame();
 
 	inline void AddUpdateObject(Component* obj) { mUpdateObjects.push_back(obj); }
 

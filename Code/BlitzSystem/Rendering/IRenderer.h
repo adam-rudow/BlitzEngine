@@ -81,3 +81,5 @@ public:
 	virtual void AdjustNumTrianglesInScene(int deltaTriangles) = 0;
 	virtual UINT32 GetNumTrianglesInScene() const = 0;
 };
+
+extern IRenderer* ConstructRenderer(HINSTANCE hInstance, int nCmdShow);

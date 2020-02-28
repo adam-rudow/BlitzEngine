@@ -1,5 +1,6 @@
 #include "InputManager.h"
 #include "../System.h"
+#include "../Application.h"
 #include "IGame.h"
 
 #define KEY_PRESSED 1       // flag, indicating that key was pressed
@@ -7,6 +8,12 @@
 #define KEY_MULTI_PRESSED 4 // flag, indicating that key was pressed more than once
 
 //ImplSingleton(InputManager)
+
+IInputManager* ConstructInputManager()
+{
+	IInputManager::StaticConstruct<InputManager>();
+	return IInputManager::Instance();
+}
 
 InputManager::InputManager() : cursorVisible(true)
 {
@@ -110,14 +117,14 @@ POINT InputManager::GetMousePos(bool windowSpace) const
 	POINT pos;
 	GetCursorPos(&pos);
 	if(windowSpace)
-		MapWindowPoints(NULL, System::Instance()->GetHWnd(), &pos, 1);
+		MapWindowPoints(NULL, Application::Instance()->GetHWnd(), &pos, 1);
 	return pos;
 }
 
 void InputManager::SetMousePos(POINT position, bool windowSpace) const
 {
   if(windowSpace)
-    MapWindowPoints(System::Instance()->GetHWnd(), NULL, &position, 1);
+    MapWindowPoints(Application::Instance()->GetHWnd(), NULL, &position, 1);
   SetCursorPos(position.x, position.y);
 }
 
@@ -158,12 +165,12 @@ void InputManager::CheckForWindowsMessages()
 		//if (msg.message >= WM_MOUSEFIRST && msg.message <= WM_MOUSELAST)
 		//	fHandled = HandleMouseEvent(&msg);
 		//if(msg.message >= WM_KEYFIRST && msg.message <= WM_KEYLAST)
-		fHandled = IGame::Instance()->HandleKeyEvent(&msg);
+		fHandled = Application::Instance()->HandleKeyEvent(&msg);
 
 		//if (InputManager::Instance()->GetTriggerState(VK_RBUTTON) || InputManager::Instance()->GetTriggerState(VK_LBUTTON))
 		{
 			//OutputDebugString("Right Mouse Button\n");
-			IGame::Instance()->HandleMouseEvent(&msg);
+			Application::Instance()->HandleMouseEvent(&msg);
 		}
 
 		// translate keystroke messages into the right format
@@ -174,7 +181,7 @@ void InputManager::CheckForWindowsMessages()
 
 		if (msg.message == WM_QUIT)
 		{
-			System::Instance()->Quit(msg.wParam);
+			Application::Instance()->Quit(msg.wParam);
 
 			// return this part of the WM_QUIT message to Windows
 			//retParam = msg.wParam;

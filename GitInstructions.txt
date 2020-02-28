@@ -1,0 +1,8 @@
+
+To add new changes
+: git add *
+or
+: git add <files>
+: git commit -m ""
+: git push origin master
+:<user/psw>

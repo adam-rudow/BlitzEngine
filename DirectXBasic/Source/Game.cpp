@@ -4,6 +4,8 @@
 //#include <windowsx.h>
 //#include <iostream>
 //#include "PreCompiledHeader.h"
+#include <Application.h>
+#include <Main.h>
 #include "Game.h"
 #include "EffectManager.h"
 #include "MeshComponent.h"
@@ -19,15 +21,22 @@
 //ImplAbstractSingleton(IGame, Game)
 //void ConstructInternalIGame() 
 //{
-//	IGame* curInstance = IGame::Instance();
-//	IGame::ResetInstance(new Game());
+//	IGame* curInstance = IFeatureTestGame::Instance();
+//	IFeatureTestGame::ResetInstance(new Game());
 //	if (curInstance != nullptr)	
 //	{ 						
 //		delete(curInstance); 							
 //	}													
 //}
 
-Game::Game() : IGame()
+Application* ConstructApplication()
+{
+	// Ew, this needs fixing once the first refactor is done
+	Application::sInstance = new FeatureTestGame();
+	return Application::Instance();
+}
+
+FeatureTestGame::FeatureTestGame() : Application()
 //, mRenderer(), //, mAssetLoader(*this)
 {
 	//GameInstance = this;
@@ -35,16 +44,16 @@ Game::Game() : IGame()
 	mFrameRate = 0;
 }
 
-Game::~Game()
+FeatureTestGame::~FeatureTestGame()
 {
 	//[S1] Fix Dependecy
 	//delete(AssetLoader::Instance());
-	//delete(System::Instance());
+	//delete(Application::Instance());
 
 	//delete(Profiler::Instance());
 }
 
-bool Game::Init()
+void FeatureTestGame::Init_Internal()
 {
 	//System::Construct();
 	//[S1] Fix Dependecy
@@ -57,8 +66,6 @@ bool Game::Init()
 	//mRenderer = Renderer::Instance();
 
 	LoadGame();
-
-	return true;
 }
 
 bool is_big_endian(void)
@@ -82,11 +89,13 @@ bool is_big_endian(void)
 	}
 }
 
-void Game::Update()
+void FeatureTestGame::Update()
 {
-	//TickGameClock();
+	Application::Update();
+	
+	TickGameClock();
 
-	mFrameTime = System::Instance()->GetFrameTime();
+	mFrameTime = Application::Instance()->GetFrameTime();
 	cam->Update(S_CAST(float, mFrameTime));
 
 	for (size_t i = 0; i < mUpdateObjects.size(); ++i)
@@ -179,7 +188,7 @@ void Game::Update()
 //}
 
 
-void Game::LoadGame()
+void FeatureTestGame::LoadGame()
 {
 	/*
 	Vector3 dir(0, 1, 1);
@@ -290,7 +299,7 @@ void Game::LoadGame()
 
 }
 
-void Game::LoadSponzaScene()
+void FeatureTestGame::LoadSponzaScene()
 {
 	//[S1] Fix Dependecy
 	MeshComponent* world = AssetLoader::Instance()->LoadMesh("Sponza_Scene.mesh");
@@ -310,7 +319,7 @@ void Game::LoadSponzaScene()
 	sun->SetEnabled(true);
 }
 
-void Game::LoadSandsScene()
+void FeatureTestGame::LoadSandsScene()
 {
 	//[S1] Fix Dependecy
 	MeshComponent* world = AssetLoader::Instance()->LoadMesh("sand_location.mesh");
@@ -326,7 +335,7 @@ void Game::LoadSandsScene()
 	sun->SetEnabled(true);
 }
 
-void Game::LoadCharizardScene()
+void FeatureTestGame::LoadCharizardScene()
 {
 	float startY = -VoxelGrid::s_voxelSize / 2;
 	//
@@ -353,7 +362,7 @@ void Game::LoadCharizardScene()
 	crate->SetScale(0.0001f);
 }
 
-void Game::LoadWorldAxis()
+void FeatureTestGame::LoadWorldAxis()
 {
 	//[S1] Fix Dependecy
 	MeshComponent* mc = nullptr;// AssetLoader::Instance()->LoadMesh("axis.obj"); //new MeshComponent(*this);
@@ -361,7 +370,7 @@ void Game::LoadWorldAxis()
 	mc->SetPosition(Vector3(0, 0, 0));	
 }
 
-bool Game::HandleMouseEvent(MSG* msg)
+bool FeatureTestGame::HandleMouseEvent(MSG* msg)
 {
 	//WPARAM fwKeys = GET_KEYSTATE_WPARAM(msg->wParam);
 	if (msg->message == WM_MOUSEWHEEL) // mouse wheel
@@ -415,7 +424,7 @@ bool Game::HandleMouseEvent(MSG* msg)
 	return true;
 }
 
-bool Game::HandleKeyEvent(MSG* msg)
+bool FeatureTestGame::HandleKeyEvent(MSG* msg)
 {
 	// Check camera-specific movement
 	cam->CheckInputMovement();
@@ -490,7 +499,7 @@ bool Game::HandleKeyEvent(MSG* msg)
 	}
 	else if (msg->wParam == 0x1B) // Escape key
 	{
-		Quit();
+		Quit(0);
 	}
 	else if (msg->wParam == 0x08) // Backspace key
 	{
@@ -504,7 +513,7 @@ bool Game::HandleKeyEvent(MSG* msg)
 	return true;
 }
 
-void Game::TickGameClock()
+void FeatureTestGame::TickGameClock()
 {
 	//SYSTEMTIME time;
 	//GetSystemTime(&time);
@@ -523,27 +532,22 @@ void Game::TickGameClock()
 	mFrameRate = S_CAST(float, 1.0f / mFrameTime);
 	mGameTime += mFrameTime;*/
 	//[S1]
-	System::Instance()->Tick();
+	//Application::Instance()->Tick();
 	//[S1]
-	float avgFrameRate = S_CAST(float, 1.0 / System::Instance()->GetAverageFrameTime());
+	float avgFrameRate = S_CAST(float, 1.0 / Application::Instance()->GetAverageFrameTime());
 
 	//char str[256];
 	//sprintf_s(str, "Frame Time =%f ms\n", mFrameTime * 1000);
 	//OutputDebugString(str);
-	std::string frameTimeStr = "Frame Time: " + std::to_string(System::Instance()->GetAverageFrameTime() * 1000).substr(0, 5) + "ms";
+	std::string frameTimeStr = "Frame Time: " + std::to_string(Application::Instance()->GetAverageFrameTime() * 1000).substr(0, 5) + "ms";
 	std::string fpsStr = "FPS: \t  " + std::to_string(avgFrameRate).substr(0, 5);
 
 	IRenderer::Instance()->DrawString(frameTimeStr.c_str(), 20.0f, 50.0f);
 	IRenderer::Instance()->DrawString(fpsStr.c_str(), 20.0f, 75.0f);
 }
 
-void Game::AddCameraRotation(float xRot, float yRot)
+void FeatureTestGame::AddCameraRotation(float xRot, float yRot)
 {
 	cam->RotateHorizontal(xRot);// / (Renderer::Window_Width));// *0.5f));
 	cam->RotateVerticle(yRot);
-}
-
-void Game::Quit()
-{
-	//mQuitGame = true;
 }

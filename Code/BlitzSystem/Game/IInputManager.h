@@ -2,7 +2,7 @@
 #include "../System.h"
 #include "Utils/Utility.h"
 
-class SYSTEM_EXPORT IInputManager
+class IInputManager
 {
 	DeclAbstractSingleton(IInputManager);
 
@@ -34,3 +34,5 @@ public:
 	// toggle mouse-cursor
 	virtual void ShowMouseCursor(bool show) = 0;
 };
+
+extern IInputManager* ConstructInputManager();
