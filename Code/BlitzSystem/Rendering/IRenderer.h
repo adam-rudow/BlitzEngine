@@ -20,7 +20,7 @@ public:
 	//~IRenderer();
 
 	// Startup functions
-	virtual bool Init(HINSTANCE hInstance, int nCmdShow) = 0;
+	virtual bool Init() = 0;
 	//bool CreateGameWindow(HINSTANCE hInstance);
 
 	// Core Rendering
@@ -82,4 +82,4 @@ public:
 	virtual UINT32 GetNumTrianglesInScene() const = 0;
 };
 
-extern IRenderer* ConstructRenderer(HINSTANCE hInstance, int nCmdShow);
+extern IRenderer* ConstructRenderer();

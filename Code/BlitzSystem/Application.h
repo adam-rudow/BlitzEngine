@@ -33,10 +33,10 @@ public:
 	static Application* sInstance;
 
 //------------------------- System -------------------------
-	bool			Init(HINSTANCE hInstance, int nCmdShow);
+	bool			Init();
 	virtual void	Init_Internal() {}
 
-	void			RunLoop(HINSTANCE hInstance, int nCmdShow);
+	void			RunLoop();
 	virtual void	Update();
 
 	inline HWND		GetHWnd() const { return hWnd; }
@@ -55,7 +55,7 @@ public:
 	static int		SysVersion() { return 99; }
 
 	WPARAM			GetQuitParam() const { return mRetParam; }
-	bool			CreateGameWindow(HINSTANCE hInstance, HWND& outHwnd);
+	bool			CreateGameWindow(HWND& outHwnd);
 
 	void			Quit(WPARAM retParam);
 //------------------------- System End -------------------------

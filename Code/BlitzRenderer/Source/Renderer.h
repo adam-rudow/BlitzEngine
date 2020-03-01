@@ -122,7 +122,7 @@ public:
 	~Renderer();
 
 	// Startup functions
-	bool Init(HINSTANCE hInstance, int nCmdShow);
+	bool Init();
 	//bool CreateGameWindow(HINSTANCE hInstance);
 
 	// Core Rendering

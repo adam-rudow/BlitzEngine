@@ -21,9 +21,10 @@ int Renderer::Window_Height = GWindowHeight;
 
 //ImplSingleton(Renderer)
 
-IRenderer* ConstructRenderer(HINSTANCE hInstance, int nCmdShow)
+IRenderer* ConstructRenderer()
 {
 	IRenderer::StaticConstruct<Renderer>();
+	IRenderer::Instance()->Init();
 	return IRenderer::Instance();
 }
 
@@ -67,13 +68,13 @@ Renderer::~Renderer()
 
 }
 
-bool Renderer::Init(HINSTANCE hInstance, int nCmdShow)
+bool Renderer::Init()
 {
 	GraphicsDriver::Construct();
 	mGraphicsDriver = GraphicsDriver::Instance();
 
 	HWND hWnd;
-	if (!Application::Instance()->CreateGameWindow(hInstance, hWnd))
+	if (!Application::Instance()->CreateGameWindow(hWnd))
 		DbgAssert(false, "Failed to create Game window!\n");
 
 	mGraphicsDriver->InitGraphics(hWnd);
@@ -93,7 +94,7 @@ bool Renderer::Init(HINSTANCE hInstance, int nCmdShow)
 	GpuProfiler::Instance()->Init();
 
 	// Display the window if all initialization succeeds
-	ShowWindow(hWnd, nCmdShow);
+	ShowWindow(hWnd, SW_SHOW);
 
 	// Setup constant buffers
 	mFrameConstBuffer	= mGraphicsDriver->CreateConstantBuffer(sizeof(PerFrameConstants));

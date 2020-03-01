@@ -43,13 +43,13 @@ Application::~Application()
 	delete(mRenderer);
 }
 
-bool Application::Init(HINSTANCE hInstance, int nCmdShow)
+bool Application::Init()
 {
 	//IInputManager::StaticConstruct<InputManager>();
 	//IRenderer::Instance()->Init(hInstance, nCmdShow);
 
 	IInputManager* inputManager = ConstructInputManager();
-	IRenderer* renderer = ConstructRenderer(hInstance, nCmdShow);
+	IRenderer* renderer = ConstructRenderer();
 	//Profiler::Construct();
 	RandomGen::Construct();
 	RandomGen::Init();
@@ -61,11 +61,10 @@ bool Application::Init(HINSTANCE hInstance, int nCmdShow)
 	return true;
 }
 
-void Application::RunLoop(HINSTANCE hInstance, int nCmdShow)
+void Application::RunLoop()
 {
 	IInputManager* inputManager = ConstructInputManager();
-	IRenderer* renderer = ConstructRenderer(hInstance, nCmdShow);
-	renderer->Init(hInstance, nCmdShow);
+	IRenderer* renderer = ConstructRenderer();
 
 	//Profiler::Construct();
 	RandomGen::Construct();
@@ -139,7 +138,7 @@ double Application::QueryCPUFrameTime()
 	return mPrevTimerTime;
 }
 
-bool Application::CreateGameWindow(HINSTANCE hInstance, HWND& outHwnd)
+bool Application::CreateGameWindow(HWND& outHwnd)
 {
 	// struct that holds into for the window class
 	WNDCLASSEX wc;
@@ -147,11 +146,13 @@ bool Application::CreateGameWindow(HINSTANCE hInstance, HWND& outHwnd)
 	// clear out the window class for use
 	ZeroMemory(&wc, sizeof(WNDCLASSEX));
 
+	HINSTANCE appInstance = static_cast<HINSTANCE>(GetModuleHandle(nullptr));
+
 	// fill in the struct with the needed info
 	wc.cbSize = sizeof(WNDCLASSEX);
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.lpfnWndProc = WindowProc;
-	wc.hInstance = hInstance;
+	wc.hInstance = appInstance;
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
 	wc.lpszClassName = "WindowClass1";
 	//if(!m_IsFullScreen)
@@ -175,7 +176,7 @@ bool Application::CreateGameWindow(HINSTANCE hInstance, HWND& outHwnd)
 		GWindowHeight,		// height
 		NULL,				// no parent window
 		NULL,				// no menus
-		hInstance,			// application handle
+		appInstance,		// application handle
 		NULL);				// used with multiple windows
 
 	outHwnd = hWnd;

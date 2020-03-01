@@ -5,12 +5,12 @@
 
 #include "Application.h"
 
+//int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 
-//// the entry point for any windows program
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
+int main(int argc, char* argv[])
 {
 	Application* application = ConstructApplication();
-	application->RunLoop(hInstance, nCmdShow);
+	application->RunLoop();
 
 	WPARAM quitParam = application->GetQuitParam();
 	delete(application);

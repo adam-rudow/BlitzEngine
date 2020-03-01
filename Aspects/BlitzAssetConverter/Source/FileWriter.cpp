@@ -12,7 +12,7 @@ using std::cerr;
 
 #pragma optimize("", off)
 
-#define DEBUG_TEXT_FILE 1
+#define DEBUG_TEXT_FILE 0
 
 #define MAT_MASK_ALBEDO 1 << 0
 #define MAT_MASK_NORMAL 1 << 1
