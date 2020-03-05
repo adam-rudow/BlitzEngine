@@ -417,7 +417,7 @@ bool AssetLoader::ConvertFbxMesh(const std::string& fileName)
 			std::vector<std::string> textureNames = GetFBXTextureNames(pFbxChildNode, pMesh);
 			//materialName = materialName.substr((dir + mRootFolder + mTextureFolder).length());
 			bool containsMat = false;
-			for (int m = 0; m < materialNames.size(); ++m)
+			for (uint32_t m = 0; m < materialNames.size(); ++m)
 			{
 				if (materialNames[m][0] == textureNames[0])
 				{

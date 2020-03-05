@@ -68,7 +68,7 @@ void TextureGPU::createDeferredRenderTexture(UINT32 w, UINT32 h)
 	texDesc.Usage = D3D11_USAGE_DEFAULT;
 	texDesc.BindFlags = D3D11_BIND_RENDER_TARGET |	D3D11_BIND_SHADER_RESOURCE;
 	HRESULT hr = pDevice->CreateTexture2D(&texDesc, 0, &mTexture);
-	DbgAssert(SUCCEEDED(hr), "");
+	BZ_ASSERT(SUCCEEDED(hr), "");
 
 	// Generate render target view
 	D3D11_RENDER_TARGET_VIEW_DESC RTVDesc;
@@ -76,7 +76,7 @@ void TextureGPU::createDeferredRenderTexture(UINT32 w, UINT32 h)
 	RTVDesc.Format = DXGI_FORMAT_R32G32B32A32_FLOAT;
 	RTVDesc.ViewDimension = D3D11_RTV_DIMENSION_TEXTURE2D;
 	hr = pDevice->CreateRenderTargetView(mTexture, &RTVDesc, &mRenderTargetView);
-	DbgAssert(SUCCEEDED(hr), "");
+	BZ_ASSERT(SUCCEEDED(hr), "");
 
 	// Generate shader resource view
 	D3D11_SHADER_RESOURCE_VIEW_DESC SRVDesc;
@@ -85,7 +85,7 @@ void TextureGPU::createDeferredRenderTexture(UINT32 w, UINT32 h)
 	SRVDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
 	SRVDesc.Texture2D.MipLevels = 1;
 	hr = pDevice->CreateShaderResourceView(mTexture, &SRVDesc, &mShaderResourceView);
-	DbgAssert(SUCCEEDED(hr), "");
+	BZ_ASSERT(SUCCEEDED(hr), "");
 
 	// Create depth stencil texture
 	//ID3D11Texture2D* depthStencilTexture = NULL;
@@ -100,7 +100,7 @@ void TextureGPU::createDeferredRenderTexture(UINT32 w, UINT32 h)
 	depthStencilDesc.Usage = D3D11_USAGE_DEFAULT;
 	depthStencilDesc.BindFlags = D3D11_BIND_DEPTH_STENCIL;
 	hr = pDevice->CreateTexture2D(&depthStencilDesc, 0, &mDepthTexture);
-	DbgAssert(SUCCEEDED(hr), "");
+	BZ_ASSERT(SUCCEEDED(hr), "");
 
 	// Create depth stencil view
 	D3D11_DEPTH_STENCIL_VIEW_DESC depthStencilViewDesc;
@@ -108,7 +108,7 @@ void TextureGPU::createDeferredRenderTexture(UINT32 w, UINT32 h)
 	depthStencilViewDesc.Format = depthStencilDesc.Format;
 	depthStencilViewDesc.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
 	hr = pDevice->CreateDepthStencilView(mDepthTexture, &depthStencilViewDesc, &mDepthStencilView);
-	DbgAssert(SUCCEEDED(hr), "");
+	BZ_ASSERT(SUCCEEDED(hr), "");
 
 	mSamplerState = SamplerState_NoMips_NoMinTexelLerp_NoMagTexelLerp_Clamp;
 }
@@ -136,7 +136,7 @@ void TextureGPU::createVoxelizationDummyRenderTexture(UINT32 w, UINT32 h)
 	texDesc.Usage = D3D11_USAGE_DEFAULT;
 	texDesc.BindFlags = D3D11_BIND_RENDER_TARGET;
 	HRESULT hr = pDevice->CreateTexture2D(&texDesc, 0, &mTexture);
-	DbgAssert(SUCCEEDED(hr), "");
+	BZ_ASSERT(SUCCEEDED(hr), "");
 
 	// Generate render target view
 	D3D11_RENDER_TARGET_VIEW_DESC RTVDesc;
@@ -144,7 +144,7 @@ void TextureGPU::createVoxelizationDummyRenderTexture(UINT32 w, UINT32 h)
 	RTVDesc.Format = DXGI_FORMAT_R32G32B32A32_FLOAT;
 	RTVDesc.ViewDimension = D3D11_RTV_DIMENSION_TEXTURE2D;
 	hr = pDevice->CreateRenderTargetView(mTexture, &RTVDesc, &mRenderTargetView);
-	DbgAssert(SUCCEEDED(hr), "");
+	BZ_ASSERT(SUCCEEDED(hr), "");
 
 	// Create depth stencil texture
 	//ID3D11Texture2D* depthStencilTexture = NULL;
@@ -159,7 +159,7 @@ void TextureGPU::createVoxelizationDummyRenderTexture(UINT32 w, UINT32 h)
 	depthStencilDesc.Usage = D3D11_USAGE_DEFAULT;
 	depthStencilDesc.BindFlags = D3D11_BIND_DEPTH_STENCIL;
 	hr = pDevice->CreateTexture2D(&depthStencilDesc, 0, &mDepthTexture);
-	DbgAssert(SUCCEEDED(hr), "");
+	BZ_ASSERT(SUCCEEDED(hr), "");
 
 	// Create depth stencil view
 	D3D11_DEPTH_STENCIL_VIEW_DESC depthStencilViewDesc;
@@ -167,15 +167,15 @@ void TextureGPU::createVoxelizationDummyRenderTexture(UINT32 w, UINT32 h)
 	depthStencilViewDesc.Format = depthStencilDesc.Format;
 	depthStencilViewDesc.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
 	hr = pDevice->CreateDepthStencilView(mDepthTexture, &depthStencilViewDesc, &mDepthStencilView);
-	DbgAssert(SUCCEEDED(hr), "");
+	BZ_ASSERT(SUCCEEDED(hr), "");
 }
 
 void TextureGPU::createVPLColors2DTextureArrays(UINT32 w, UINT32 h, UINT32 d)
 {
 	mViewport.TopLeftX = 0;
 	mViewport.TopLeftY = 0;
-	mViewport.Width = S_CAST(float, w);
-	mViewport.Height = h;
+	mViewport.Width = S_CAST(FLOAT, w);
+	mViewport.Height = S_CAST(FLOAT, h);
 	mViewport.MinDepth = 0.0f;
 	mViewport.MaxDepth = 1.0f;
 
@@ -193,7 +193,7 @@ void TextureGPU::createVPLColors2DTextureArrays(UINT32 w, UINT32 h, UINT32 d)
 	texDesc.Usage = D3D11_USAGE_DEFAULT;
 	texDesc.BindFlags = D3D11_BIND_RENDER_TARGET | D3D11_BIND_SHADER_RESOURCE | D3D11_BIND_UNORDERED_ACCESS;
 	HRESULT hr = pDevice->CreateTexture2D(&texDesc, 0, &mTexture);
-	DbgAssert(SUCCEEDED(hr), "");
+	BZ_ASSERT(SUCCEEDED(hr), "");
 
 	// Generate render target view
 	D3D11_RENDER_TARGET_VIEW_DESC RTVDesc;
@@ -202,7 +202,7 @@ void TextureGPU::createVPLColors2DTextureArrays(UINT32 w, UINT32 h, UINT32 d)
 	RTVDesc.ViewDimension = D3D11_RTV_DIMENSION_TEXTURE2DARRAY;
 	RTVDesc.Texture2DArray.ArraySize = d;
 	hr = pDevice->CreateRenderTargetView(mTexture, &RTVDesc, &mRenderTargetView);
-	DbgAssert(SUCCEEDED(hr), "");
+	BZ_ASSERT(SUCCEEDED(hr), "");
 
 	// Generate shader resource view
 	D3D11_SHADER_RESOURCE_VIEW_DESC SRVDesc;
@@ -214,7 +214,7 @@ void TextureGPU::createVPLColors2DTextureArrays(UINT32 w, UINT32 h, UINT32 d)
 	SRVDesc.Texture2DArray.FirstArraySlice = 0;
 	SRVDesc.Texture2DArray.MostDetailedMip = 0;
 	hr = pDevice->CreateShaderResourceView(mTexture, &SRVDesc, &mShaderResourceView);
-	DbgAssert(SUCCEEDED(hr), "");
+	BZ_ASSERT(SUCCEEDED(hr), "");
 
 	// Generate unordered access view to write into from comute shader in VPL propogation
 	D3D11_UNORDERED_ACCESS_VIEW_DESC UAVDesc;
@@ -225,7 +225,7 @@ void TextureGPU::createVPLColors2DTextureArrays(UINT32 w, UINT32 h, UINT32 d)
 	UAVDesc.Texture2DArray.MipSlice = 0;
 	//UAVDesc.Texture2DArray.FirstArraySlice = 0;
 	hr = pDevice->CreateUnorderedAccessView(mTexture, &UAVDesc, &mUnorderedAccessView);
-	DbgAssert(SUCCEEDED(hr), "");
+	BZ_ASSERT(SUCCEEDED(hr), "");
 
 	mSamplerState = SamplerState_NoMips_MinLerp_MaxLerp_Clamp;
 }
@@ -261,7 +261,7 @@ void TextureGPU::createColorTextureGPU(const char* textureFilename, const char *
     createTextureNoFamily(textureFilename, package);
     mFamily = TextureFamily::COLOR_MAP;
 
-	B_ASSERT(mShaderResourceView, "texture shader resource not set");
+	BZ_ASSERT(mShaderResourceView, "texture shader resource not set");
 }
 
 void TextureGPU::createBumpTextureGPU(const char* textureFilename, const char *package)
@@ -302,7 +302,7 @@ void TextureGPU::createColorCubeTextureGPU(const char * textureFilename, const c
 
 	// Path is now a full path to the file with the filename itself
 
-	assert(false);// , "Not imlememnted!");
+	BZ_ASSERT(false, "Not implemented!");
 #if 0
 	// retrieve device from IRenderer
 	ID3D11Device *pD3DDevice = IRenderer::Instance()->mdevice;
@@ -358,14 +358,14 @@ void TextureGPU::createDrawableIntoColorTextureWithDepth(UINT32 w, UINT32 h, ESa
 	texDesc.MiscFlags = D3D11_RESOURCE_MISC_GENERATE_MIPS;
 
 	HRESULT hr = pDevice->CreateTexture2D(&texDesc, 0, &mTexture);
-	DbgAssert(SUCCEEDED(hr), "");
+	BZ_ASSERT(SUCCEEDED(hr), "");
 
 	// Null description means to create a view to all mipmap levels
 	// using the format the texture was created with
 	hr = pDevice->CreateRenderTargetView(mTexture, 0, &mRenderTargetView);
-	DbgAssert(SUCCEEDED(hr), "");
+	BZ_ASSERT(SUCCEEDED(hr), "");
 	hr = pDevice->CreateShaderResourceView(mTexture, 0, &mShaderResourceView);
-	DbgAssert(SUCCEEDED(hr), "");
+	BZ_ASSERT(SUCCEEDED(hr), "");
 
 	// Now create depth part fo the texture
 	//ID3D11Texture2D *pDepthMap = 0;
@@ -377,7 +377,7 @@ void TextureGPU::createDrawableIntoColorTextureWithDepth(UINT32 w, UINT32 h, ESa
 	texDesc.MiscFlags = 0;
 
 	hr = pDevice->CreateTexture2D(&texDesc, 0, &mDepthTexture);
-	DbgAssert(SUCCEEDED(hr), "");
+	BZ_ASSERT(SUCCEEDED(hr), "");
 
 	// setting up view for rendering into depth buffer/and reading (stenciling) from it (z-buffer algorithm red/write)
 	D3D11_DEPTH_STENCIL_VIEW_DESC dsvDesc;
@@ -387,7 +387,7 @@ void TextureGPU::createDrawableIntoColorTextureWithDepth(UINT32 w, UINT32 h, ESa
 	dsvDesc.Flags = 0;//D3D11_DSV_READ_ONLY_DEPTH;
 
 	hr = pDevice->CreateDepthStencilView(mDepthTexture, &dsvDesc, &mDepthStencilView);
-	DbgAssert(SUCCEEDED(hr), "");
+	BZ_ASSERT(SUCCEEDED(hr), "");
 
 	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc;
 	srvDesc.Format = DXGI_FORMAT_R32_FLOAT;
@@ -396,7 +396,7 @@ void TextureGPU::createDrawableIntoColorTextureWithDepth(UINT32 w, UINT32 h, ESa
 	srvDesc.Texture2D.MostDetailedMip = 0;
 
 	hr = pDevice->CreateShaderResourceView(mDepthTexture, &srvDesc, &mDepthShaderResourceView);
-	DbgAssert(SUCCEEDED(hr), "");
+	BZ_ASSERT(SUCCEEDED(hr), "");
 
 	//pDepthMap->Release();
 }
@@ -432,7 +432,7 @@ void TextureGPU::createDrawableIntoDepthTexture(UINT32 w, UINT32 h, ESamplerStat
 	texDesc.MiscFlags = 0;
 
 	HRESULT hr = pDevice->CreateTexture2D(&texDesc, 0, &mDepthTexture);
-	DbgAssert(SUCCEEDED(hr), "");
+	BZ_ASSERT(SUCCEEDED(hr), "");
 
 	// setting up view for rendering into depth buffer/and reading (stenciling) from it (z-buffer algorithm read/write)
 	D3D11_DEPTH_STENCIL_VIEW_DESC dsvDesc;
@@ -442,7 +442,7 @@ void TextureGPU::createDrawableIntoDepthTexture(UINT32 w, UINT32 h, ESamplerStat
 	dsvDesc.Flags = 0;//D3D11_DSV_READ_ONLY_DEPTH;
 
 	hr = pDevice->CreateDepthStencilView(mDepthTexture, &dsvDesc, &mDepthStencilView);
-	DbgAssert(SUCCEEDED(hr), "");
+	BZ_ASSERT(SUCCEEDED(hr), "");
 
 	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc;
 	srvDesc.Format = DXGI_FORMAT_R32_FLOAT; // DXGI_FORMAT_R24_UNORM_X8_TYPELESS;
@@ -451,7 +451,7 @@ void TextureGPU::createDrawableIntoDepthTexture(UINT32 w, UINT32 h, ESamplerStat
 	srvDesc.Texture2D.MostDetailedMip = 0;
 
 	hr = pDevice->CreateShaderResourceView(mDepthTexture, &srvDesc, &mDepthShaderResourceView);
-	DbgAssert(SUCCEEDED(hr), "");
+	BZ_ASSERT(SUCCEEDED(hr), "");
 
 	//pDepthMap->Release();
 }

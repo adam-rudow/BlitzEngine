@@ -1,6 +1,7 @@
 #pragma once
 #include <windows.h>
 #include "CoreMacros.h"
+#include "Logging/Log.h"
 
 //*********************************************
 // TODO:
@@ -33,6 +34,7 @@ static void BEPrint(const char* info)
 	//char str[256];
 	//sprintf_s(str, info);
 	OutputDebugString(info);
+	BZ_CORE_TRACE(info);
 }
 
 //**********************************************

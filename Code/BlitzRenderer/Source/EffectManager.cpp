@@ -1076,7 +1076,7 @@ void EffectManager::PropogateVPLsAcrossVoxelGrid()
 	
 	// Set up dispath dimensions
 	ID3D11DeviceContext *pDeviceContext = gDriver->GetDeviceContext();
-	DbgAssert(VoxelGrid::s_voxelGridDimension % 8 == 0);//, "ERROR: voxel grid must be a multiple of 8!");
+	BZ_ASSERT(VoxelGrid::s_voxelGridDimension % 8 == 0, "ERROR: voxel grid must be a multiple of 8!");
 	UINT32 dispatchDimension = VoxelGrid::s_voxelGridDimension / 8;
 
 	//*********************************************

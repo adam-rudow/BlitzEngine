@@ -45,6 +45,7 @@
     <ClInclude Include="Containers\TArray.h">
       <Filter>Containers</Filter>
     </ClInclude>
+    <ClInclude Include="Logging\Log.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Math\Matrix4.cpp">
@@ -71,5 +72,6 @@
     <ClCompile Include="Containers\TArray.cpp">
       <Filter>Containers</Filter>
     </ClCompile>
+    <ClCompile Include="Logging\Log.cpp" />
   </ItemGroup>
 </Project>

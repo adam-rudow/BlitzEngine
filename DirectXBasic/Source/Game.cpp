@@ -202,7 +202,7 @@ void FeatureTestGame::LoadGame()
 	cam = new CameraComponent();
 	cam->SetAsActive();
 
-	static int SceneToLoad = 2;
+	static int SceneToLoad = 3;
 	if (SceneToLoad == 1)
 	{
 		LoadSponzaScene();

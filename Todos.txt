@@ -1,7 +1,23 @@
-BlitzEngine TODO:
-- Clean Folders
-- Rearrange binary folders
-- Cherno lessons (Entry Point, Logging, Premake(?))
-- Revamp Asset converter
+BlitzEngine Short Term TODO:
+
+Meta:
+- Rearrange Folders (binaries, assets, code/engine)
+- Cherno lessons (Premake(?), layer, events)
+
+Engine
+- Instance Removal (Renderer, InputManager, System)
+- Renderer uses prebuilt shaders
+- Texture Cleanup
+- Windows, Views, etc
+- Input system improvements
+- ECS improvements
+
+Asset Converter
+- Clean up code!!!
+- Run on all out-of-date assets
+- Run on shaders!
+
 ...
+
+Long Term TODO:
 - Renderer refactor for multithreading

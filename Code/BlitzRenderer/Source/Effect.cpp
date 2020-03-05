@@ -77,7 +77,7 @@ void Effect::loadTechnique(
 			if (mVSVertexFormat == VertexFormat_Count)
 			{
 				int i = 0;
-				DbgAssert(false, "No vertex format set");
+				BZ_ASSERT(false, "No vertex format set");
 			}
 			else if (mVSVertexFormat == VertexFormat_MinimalMesh && vsBlob != NULL)
 			{
@@ -221,7 +221,7 @@ void Effect::setConstantBuffer(ID3D11Device *pDevice, ID3D11DeviceContext *pDevi
 		D3D11_MAP_WRITE_DISCARD, 
 		0, 
 		&mappedResource);
-	DbgAssert(SUCCEEDED(hr), "");
+	BZ_ASSERT(SUCCEEDED(hr), "");
 	// set value
 	memcpy(mappedResource.pData, pVal, size);
 

@@ -124,7 +124,8 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>FBXSDK_SHARED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)Code\BlitzSystem;$(SolutionDir)Code\BlitzCommon;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Code\BlitzSystem;$(SolutionDir)Code\BlitzCommon;%(AdditionalIncludeDirectories);$(SolutionDir)External\spdlog\include;$(ProjectDir)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2018.1.1\lib\vs2015\x86\debug;$(SolutionDir)Output\Binaries\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -138,7 +139,8 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>FBXSDK_SHARED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Adam\Documents\Visual Studio 2015\Projects\DirectXBasic\BlitzAssetConverter\Source;$(SolutionDir)Code\BlitzSystem;$(SolutionDir)Code\BlitzCommon;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Adam\Documents\Visual Studio 2015\Projects\DirectXBasic\BlitzAssetConverter\Source;$(SolutionDir)Code\BlitzSystem;$(SolutionDir)Code\BlitzCommon;%(AdditionalIncludeDirectories); $(SolutionDir)External\spdlog\include;$(ProjectDir);$(SolutionDir)External\spdlog\include</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2018.1.1\lib\vs2015\x86\debug;$(SolutionDir)Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -167,6 +169,8 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>FBXSDK_SHARED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)External\spdlog\include</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>

@@ -75,7 +75,7 @@ bool Renderer::Init()
 
 	HWND hWnd;
 	if (!Application::Instance()->CreateGameWindow(hWnd))
-		DbgAssert(false, "Failed to create Game window!\n");
+		BZ_ASSERT(false, "Failed to create Game window!\n");
 
 	mGraphicsDriver->InitGraphics(hWnd);
 
@@ -83,12 +83,12 @@ bool Renderer::Init()
 	//EffectManager::Instance()->SetGame(System::Instance()->GetGame());
 
 	if(!InitShaders())
-		DbgAssert(false, "Failed to create Shaders!\n");
+		BZ_ASSERT(false, "Failed to create Shaders!\n");
 	
 	EffectManager::Instance()->LoadGPUResources();
 
 	if(!InitFontEngine())
-		DbgAssert(false, "Failed to create Font Engine!\n");
+		BZ_ASSERT(false, "Failed to create Font Engine!\n");
 
 	GpuProfiler::Construct();
 	GpuProfiler::Instance()->Init();
@@ -1033,7 +1033,7 @@ void Renderer::RemoveLight(LightComponent* light)
 
 void Renderer::AddPointLight(PointLightComponent* comp)
 {
-	DbgAssert(mPointLights.size() <= MAX_POINT_LIGHTS, "Adding light would exceed max size in buffer!");
+	BZ_ASSERT(mPointLights.size() <= MAX_POINT_LIGHTS, "Adding light would exceed max size in buffer!");
 	mPointLights.push_back(comp);
 	mLights.push_back(comp);
 }
@@ -1045,7 +1045,7 @@ void Renderer::RemovePointLight(PointLightComponent* comp)
 
 void Renderer::AddDirectionalLight(DirectionalLightComponent* comp)
 {
-	DbgAssert(mDirectionalLights.size() <= MAX_DIRECTIONAL_LIGHTS, "Adding light would exceed max size in buffer!");
+	BZ_ASSERT(mDirectionalLights.size() <= MAX_DIRECTIONAL_LIGHTS, "Adding light would exceed max size in buffer!");
 	mDirectionalLights.push_back(comp);
 	mLights.push_back(comp);
 }
@@ -1057,7 +1057,7 @@ void Renderer::RemoveDirectionalLight(DirectionalLightComponent* comp)
 
 void Renderer::AddSpotLight(SpotLightComponent* comp)
 {
-	DbgAssert(mSpotLights.size() <= MAX_SPOT_LIGHTS, "Adding light would exceed max size in buffer!");
+	BZ_ASSERT(mSpotLights.size() <= MAX_SPOT_LIGHTS, "Adding light would exceed max size in buffer!");
 	mSpotLights.push_back(comp);
 	mLights.push_back(comp);
 }

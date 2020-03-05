@@ -2,6 +2,7 @@
 #include "AlphaBlendStateManager.h"
 #include "Effect.h"
 #include "Utils/AssertDbg.h"
+#include "Logging/Log.h"
 
 ImplSingleton(AlphaBlendStateManager)
 
@@ -102,7 +103,7 @@ void AlphaBlendState::TranslateToAPIValues()
 
 	HRESULT hr = GraphicsDriver::Instance()->GetDevice()->CreateBlendState(&bdsc, &mBlendStateObject);
 
-	DbgAssert(hr == S_OK, "Error creating blend state");
+	BZ_ASSERT(hr == S_OK, "Error creating blend state");
 
 }
 

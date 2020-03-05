@@ -492,10 +492,10 @@ void MeshWriter::WriteMaterialSet(std::string originalAssetName, std::vector< st
 		WriteUnsigned(0);
 
 		// Write number of materials used
-		unsigned numMaterials = materialList.size();
+		unsigned int numMaterials = materialList.size();
 		WriteUnsigned(numMaterials);
 
-		for (int i = 0; i < numMaterials; ++i)
+		for (unsigned int i = 0; i < numMaterials; ++i)
 		{
 			// Write each material file name
 			std::string matName = ExtractFileNameWithoutFileType(materialList[i][0]);
@@ -507,7 +507,7 @@ void MeshWriter::WriteMaterialSet(std::string originalAssetName, std::vector< st
 		CloseOutFile();
 
 		// Write each material file
-		for (int i = 0; i < numMaterials; ++i)
+		for (unsigned int i = 0; i < numMaterials; ++i)
 		{
 			//std::vector<std::string> textures;
 			//for (int k = 0; k < materialList[i].size(); ++k)
@@ -528,13 +528,13 @@ void MeshWriter::ReadMaterialSet(std::string fileName, std::vector<std::string>&
 	OpenFileForReading(outPath);
 
 	// Read Format Version #
-	unsigned formatVersionNum = ReadUnsigned();
+	unsigned int formatVersionNum = ReadUnsigned();
 
 	// Read number of materials used
-	unsigned numMaterials = ReadUnsigned();
+	unsigned int numMaterials = ReadUnsigned();
 	materialFileNames.resize(numMaterials);
 
-	for (int i = 0; i < numMaterials; ++i)
+	for (unsigned int i = 0; i < numMaterials; ++i)
 	{
 		// Read each material file name
 		materialFileNames[i] = ReadString();
@@ -551,7 +551,7 @@ void MeshWriter::ReadMaterialSet(std::string fileName, std::vector<std::string>&
 
 	// Read each material file
 	outMaterials.resize(numMaterials);
-	for (int i = 0; i < numMaterials; ++i)
+	for (unsigned int i = 0; i < numMaterials; ++i)
 	{
 		ReadMaterial(materialFileNames[i], outMaterials[i]);
 	}
@@ -572,10 +572,10 @@ void MeshWriter::WriteMaterial(std::string originalAssetName, std::vector<std::s
 		WriteUnsigned(0);
 
 		// Write number of textures
-		unsigned numTextures = textureNames.size();
+		unsigned int numTextures = textureNames.size();
 		WriteUnsigned(numTextures);
 
-		for (int i = 0; i < numTextures; ++i)
+		for (unsigned int i = 0; i < numTextures; ++i)
 		{
 			WriteString(textureNames[i]);
 		}
@@ -835,7 +835,7 @@ std::string MeshWriter::ExtractFileNameWithoutFileType(std::string fileName)
 	}
 
 	std::string localFile = fileName.substr(i);
-	for (int k = 0; k < localFile.size(); ++k)
+	for (unsigned int k = 0; k < localFile.size(); ++k)
 	{
 		if (localFile[k] == '.')
 		{

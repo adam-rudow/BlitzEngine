@@ -11,6 +11,7 @@
 #include "SamplerState.h"
 
 #include "Utils/AssertDbg.h"
+#include "Logging/Log.h"
 
 #include <iostream>
 #include <sstream>
@@ -139,18 +140,18 @@ void GraphicsDriver::InitD3D(HWND hWnd)
 
 	if (SUCCEEDED(hr))
 	{
-		OutputDebugString("\nBlitzEngine: Created D3D Device:");
+		BZ_CORE_TRACE("\nBlitzEngine: Created D3D Device:");
 		if (level == D3D_FEATURE_LEVEL_11_0)
 		{
-			OutputDebugString("D3D_FEATURE_LEVEL_11_0\n");
+			BZ_CORE_TRACE("D3D_FEATURE_LEVEL_11_0\n");
 		}
 		else if (level == D3D_FEATURE_LEVEL_10_1)
 		{
-			OutputDebugString("D3D_FEATURE_LEVEL_10_1\n");
+			BZ_CORE_TRACE("D3D_FEATURE_LEVEL_10_1\n");
 		}
 		else if (level == D3D_FEATURE_LEVEL_10_0)
 		{
-			OutputDebugString("D3D_FEATURE_LEVEL_10_0\n");
+			BZ_CORE_TRACE("D3D_FEATURE_LEVEL_10_0\n");
 		}
 	}
 	/*else
@@ -161,12 +162,12 @@ void GraphicsDriver::InitD3D(HWND hWnd)
 		}
 	}*/
 
-	DbgAssert(hr == S_OK, "Failed to init directX stuffs\n");
+	BZ_ASSERT(hr == S_OK, "Failed to init directX stuffs\n");
 	
 	// get the address of the back buffer
 	ID3D11Texture2D *pBackBuffer;
 	hr = g_SwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&pBackBuffer);
-	DbgAssert(hr == S_OK, "Failed to get the back buffer\n");
+	BZ_ASSERT(hr == S_OK, "Failed to get the back buffer\n");
 
 	// temp try
 	D3D11_RENDER_TARGET_VIEW_DESC rtvd;
@@ -176,7 +177,7 @@ void GraphicsDriver::InitD3D(HWND hWnd)
 
 	// use the back buffer address to create the render target
 	hr = g_Device->CreateRenderTargetView(pBackBuffer, &rtvd, &m_BackBuffer); // desc was NULL before
-	DbgAssert(hr == S_OK, "Failed to create the back buffer\n");
+	BZ_ASSERT(hr == S_OK, "Failed to create the back buffer\n");
 	pBackBuffer->Release();
 
 	// set the render target as the back buffer
@@ -228,12 +229,12 @@ ID3D11VertexShader* GraphicsDriver::CreateVertexShader(ID3D10Blob** vsBlob, cons
 	}
 	if (pErrorBlob != NULL)
 		pErrorBlob->Release();
-	DbgAssert(hr == S_OK, "Failed to compile vertex shader.\n");
+	BZ_ASSERT(hr == S_OK, "Failed to compile vertex shader.\n");
 
 	// encapsulate both shaders into shader objects
 	ID3D11VertexShader* pVS;
 	hr = g_Device->CreateVertexShader((*vsBlob)->GetBufferPointer(), (*vsBlob)->GetBufferSize(), NULL, &pVS);
-	DbgAssert(hr == S_OK, "Failed to create vertex shader.\n");
+	BZ_ASSERT(hr == S_OK, "Failed to create vertex shader.\n");
 
 	return pVS;
 }
@@ -259,7 +260,7 @@ ID3D11PixelShader* GraphicsDriver::CreatePixelShader(ID3D10Blob** psBlob, const 
 	}
 	if (pErrorBlob != NULL)
 		pErrorBlob->Release();
-	DbgAssert(hr == S_OK, "Failed to compile pixel shader.\n");
+	BZ_ASSERT(hr == S_OK, "Failed to compile pixel shader.\n");
 
 	// encapsulate both shaders into shader objects
 	ID3D11PixelShader* pPS;
@@ -289,7 +290,7 @@ GeometryShader* GraphicsDriver::CreateGeometryShader(ID3D10Blob** gsBlob, const 
 	}
 	if (pErrorBlob != NULL)
 		pErrorBlob->Release();
-	DbgAssert(hr == S_OK, "Failed to compile pixel shader.\n");
+	BZ_ASSERT(hr == S_OK, "Failed to compile pixel shader.\n");
 
 	// encapsulate both shaders into shader objects
 	ID3D11GeometryShader* pGS;
@@ -319,7 +320,7 @@ ComputeShader* GraphicsDriver::CreateComputeShader(ID3D10Blob** csBlob, const ch
 	}
 	if (pErrorBlob != NULL)
 		pErrorBlob->Release();
-	DbgAssert(hr == S_OK, "Failed to compile pixel shader.\n");
+	BZ_ASSERT(hr == S_OK, "Failed to compile pixel shader.\n");
 
 	// encapsulate both shaders into shader objects
 	ID3D11ComputeShader* pCS;
@@ -339,7 +340,7 @@ ComputeShader* GraphicsDriver::CreateComputeShader(ID3D10Blob** csBlob, const ch
 //	ID3DBlob* blobEffects = NULL;
 //	ID3DBlob* blobErrors = NULL;
 //	HRESULT hr = D3DX11CompileFromFile(shaderFileName, NULL, NULL, NULL, "fx_5_0", D3DCOMPILE_ENABLE_STRICTNESS, 0, NULL, &blobEffects, &blobErrors, NULL);
-//	DbgAssert(hr == S_OK, "Failed to compile pixel shader.\n");
+//	BZ_ASSERT(hr == S_OK, "Failed to compile pixel shader.\n");
 //
 //	// encapsulate both shaders into shader objects
 //	ID3DX11Effect* pFX;
@@ -352,7 +353,7 @@ ID3D11ShaderResourceView* GraphicsDriver::CreateSRVTextureFromFile(std::string f
 {
 	ID3D11ShaderResourceView* texView;
 	HRESULT hr = D3DX11CreateShaderResourceViewFromFile(g_Device, (LPCSTR)fileName.c_str(), NULL, NULL, &texView, NULL);
-	DbgAssert(hr == S_OK, "Failed to load texture file.");
+	BZ_ASSERT(hr == S_OK, "Failed to load texture file.");
 
 	std::stringstream strm;
 	strm << std::hex << (unsigned)texView;
@@ -376,7 +377,7 @@ ID3D11SamplerState* GraphicsDriver::CreateSamplerState()
 	desc.MaxLOD = D3D11_FLOAT32_MAX;
 	ID3D11SamplerState* samplerState = nullptr;
 	HRESULT hr = g_Device->CreateSamplerState(&desc, &samplerState);
-	DbgAssert(hr == S_OK, "Failure Creating Sampler State");
+	BZ_ASSERT(hr == S_OK, "Failure Creating Sampler State");
 
 	return samplerState;
 }
@@ -388,7 +389,7 @@ ID3D11InputLayout* GraphicsDriver::CreateInputLayout(const D3D11_INPUT_ELEMENT_D
 	// Create the input layout
 	ID3D11InputLayout* layoutRef = nullptr;
 	HRESULT hr = g_Device->CreateInputLayout(desc, numParams, (*compiledVSCode)->GetBufferPointer(), (*compiledVSCode)->GetBufferSize(), &layoutRef);
-	DbgAssert(hr == S_OK, "Failed to create input layout.");
+	BZ_ASSERT(hr == S_OK, "Failed to create input layout.");
 	
 	g_DeviceContext->IASetInputLayout(layoutRef);
 
@@ -415,12 +416,12 @@ ID3D11InputLayout* GraphicsDriver::CreateInputLayout(const D3D11_INPUT_ELEMENT_D
 	//bd.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;		// allow CPU to write in buffer
 
 	// hr = g_Device->CreateBuffer(&bd, NULL, &pVBuffer);	// create the buffer
-	//DbgAssert(hr == S_OK, "Failed to create vertex buffer.");
+	//BZ_ASSERT(hr == S_OK, "Failed to create vertex buffer.");
 
 	//												// copy the vertices into the buffer
 	//D3D11_MAPPED_SUBRESOURCE ms;
 	//hr = g_DeviceContext->Map(pVBuffer, NULL, D3D11_MAP_WRITE_DISCARD, NULL, &ms);
-	//DbgAssert(hr == S_OK, "Failed to map vertex buffer to GPU.");
+	//BZ_ASSERT(hr == S_OK, "Failed to map vertex buffer to GPU.");
 
 	//memcpy(ms.pData, vertices, sizeof(vertices));
 	//g_DeviceContext->Unmap(pVBuffer, NULL);
@@ -457,12 +458,12 @@ ID3D11Buffer* GraphicsDriver::CreateVertexBuffer(std::vector<float>& vertData, b
 	initialData.pSysMem = (void*)vertData.data();
 
 	HRESULT hr = g_Device->CreateBuffer(&bd, &initialData/*NULL*/, &buffer);	// create the buffer
-	DbgAssert(hr == S_OK, "Failed to create vertex buffer.");
+	BZ_ASSERT(hr == S_OK, "Failed to create vertex buffer.");
 
 	// copy the vertices into the buffer
 	/*D3D11_MAPPED_SUBRESOURCE ms;
 	hr = g_DeviceContext->Map(buffer, NULL, D3D11_MAP_WRITE_DISCARD, NULL, &ms);
-	DbgAssert(hr == S_OK, "Failed to map vertex buffer to GPU.");
+	BZ_ASSERT(hr == S_OK, "Failed to map vertex buffer to GPU.");
 	memcpy(ms.pData, vertData.data(), vertData.size() * sizeof(float));
 	g_DeviceContext->Unmap(buffer, NULL);*/
 
@@ -503,7 +504,7 @@ ID3D11Buffer* GraphicsDriver::CreateIndexBuffer(std::vector<uint32_t>& idxData)
 	initialData.pSysMem = (void*)idxData.data();
 
 	HRESULT hr = g_Device->CreateBuffer(&bd, &initialData/*NULL*/, &buffer);	// create the buffer
-	DbgAssert(hr == S_OK, "Failed to create index buffer.");
+	BZ_ASSERT(hr == S_OK, "Failed to create index buffer.");
 
 	return buffer;
 }
@@ -543,7 +544,7 @@ BufferGPU* GraphicsDriver::CreateResourceBuffer(ResourceBufferGPU* rbgpu, void *
 		sbUAVDesc.Format = DXGI_FORMAT_UNKNOWN;
 		sbUAVDesc.ViewDimension = D3D11_UAV_DIMENSION_BUFFER;
 		hr = g_Device->CreateUnorderedAccessView(buffer, &sbUAVDesc, uav);
-		DbgAssert(hr == S_OK, "");
+		BZ_ASSERT(hr == S_OK, "");
 	}
 
 	// SRV
@@ -558,7 +559,7 @@ BufferGPU* GraphicsDriver::CreateResourceBuffer(ResourceBufferGPU* rbgpu, void *
 		sbSRVDesc.Format = DXGI_FORMAT_UNKNOWN;
 		sbSRVDesc.ViewDimension = D3D11_SRV_DIMENSION_BUFFER;
 		hr = g_Device->CreateShaderResourceView(buffer, &sbSRVDesc, srv);
-		DbgAssert(hr == S_OK, "");
+		BZ_ASSERT(hr == S_OK, "");
 	}
 
 	rbgpu->SetSamplerState(&SamplerStateManager::Instance()->GetSamplerState(SamplerState_NoMips_NoMinTexelLerp_NoMagTexelLerp_Clamp));
@@ -586,7 +587,7 @@ BufferGPU* GraphicsDriver::CreateIndirectArgumentsBuffer(void* pData)
 
 	ID3D11Buffer* buffer = nullptr;
 	HRESULT hr = g_Device->CreateBuffer(&bd, &initialData, &buffer);	// create the buffer
-	DbgAssert(hr == S_OK, "Failed to create vertex buffer.");
+	BZ_ASSERT(hr == S_OK, "Failed to create vertex buffer.");
 
 	return buffer;
 }
@@ -604,7 +605,7 @@ ID3D11Buffer* GraphicsDriver::CreateConstantBuffer(unsigned size)
 	bd.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;		// allow CPU to write in buffer
 
 	HRESULT hr = g_Device->CreateBuffer(&bd, NULL, &buffer);	// create the buffer
-	DbgAssert(hr == S_OK, "Failed to create vertex buffer.");
+	BZ_ASSERT(hr == S_OK, "Failed to create vertex buffer.");
 
 	return buffer;
 }
@@ -627,7 +628,7 @@ void GraphicsDriver::CreateRasterizerState(RasterizerState* rasterizerState)
 
 	//ID3D11RasterizerState* rastState;
 	auto hr = g_Device->CreateRasterizerState(&rastDesc, &rasterizerState->mRasterizerStateObject);
-	DbgAssert(hr == S_OK, "Problem Creating Rasterizer State");
+	BZ_ASSERT(hr == S_OK, "Problem Creating Rasterizer State");
 
 	//g_DeviceContext->RSSetState(rastState);
 
@@ -654,7 +655,7 @@ ID3D11DepthStencilView* GraphicsDriver::CreateDepthStencil()
 	descDepth.CPUAccessFlags = 0;
 	descDepth.MiscFlags = 0;
 	HRESULT hr = g_Device->CreateTexture2D(&descDepth, nullptr, &depthStencilTexture);
-	DbgAssert(hr == S_OK, "Problem Creating Depth Stencil");
+	BZ_ASSERT(hr == S_OK, "Problem Creating Depth Stencil");
 
 	ID3D11DepthStencilView* depthStencil = nullptr;
 
@@ -665,7 +666,7 @@ ID3D11DepthStencilView* GraphicsDriver::CreateDepthStencil()
 	descDSV.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
 	descDSV.Texture2D.MipSlice = 0;
 	hr = g_Device->CreateDepthStencilView(depthStencilTexture, &descDSV, &depthStencil);
-	DbgAssert(hr == S_OK, "Problem Creating Depth Stencil");
+	BZ_ASSERT(hr == S_OK, "Problem Creating Depth Stencil");
 
 	return depthStencil;
 }
@@ -699,7 +700,7 @@ ID3D11DepthStencilState* GraphicsDriver::CreateDepthStencilState(bool depthTestE
 	// Create depth stencil state
 	ID3D11DepthStencilState* ss = nullptr;
 	HRESULT hr = g_Device->CreateDepthStencilState(&dsDesc, &ss);
-	DbgAssert(hr == S_OK, "Problem Creating Depth Stencil");
+	BZ_ASSERT(hr == S_OK, "Problem Creating Depth Stencil");
 
 	return ss;
 }
@@ -708,7 +709,7 @@ void GraphicsDriver::UploadBuffer(ID3D11Buffer* buffer, void* dataRet, int size)
 {
 	D3D11_MAPPED_SUBRESOURCE ms;
 	HRESULT hr = g_DeviceContext->Map(buffer, NULL, D3D11_MAP_WRITE_DISCARD, NULL, &ms);
-	DbgAssert(hr == S_OK, "Failed to map vertex buffer to GPU.");
+	BZ_ASSERT(hr == S_OK, "Failed to map vertex buffer to GPU.");
 
 	memcpy(ms.pData, dataRet, size);
 	g_DeviceContext->Unmap(buffer, NULL);

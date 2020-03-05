@@ -298,7 +298,7 @@ void Emitter::Update(float frameTime)
 		gDriver->BindResourceBuffer(mParticleBuffer->mVertexUAVBufferGPU, GpuResourceSlot_ParticleSpawns_ConsumeBuffer, false, true);
 	}
 
-	DbgAssert(mParticleBuffer->mParticles.size() % 32 == 0, "");
+	BZ_ASSERT(mParticleBuffer->mParticles.size() % 32 == 0, "");
 
 	gDriver->GetDeviceContext()->Dispatch(static_cast<int>(mParticleBuffer->mParticles.size() / 32), 1, 1);
 
@@ -372,7 +372,7 @@ PerParticleEmitterConstants Emitter::CreateEmitterConstants()
 	consts.mForces = Vector2(mForceMin, mForceMax);
 	consts.mGravitMagnitude = mGravity;
 	consts.mThetaClamp = mThetaClamp;
-	consts.mRandomSeed = mRandomSeed;
+	consts.mRandomSeed = S_CAST(float, mRandomSeed);
 	consts.mRandomWaves = mRandomSineTriples;
 
 	return consts;
