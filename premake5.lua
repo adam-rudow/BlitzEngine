@@ -172,14 +172,17 @@ project "BlitzRenderer"
 		"Engine/BlitzCommon/Source",
 		"Engine/BlitzSystem/Source",
 		"External/spdlog/include",
-		d3d_SDK_includePath,
 		windows_SDK_includePath,
+		d3d_SDK_includePath,
 	}
 	
 	links
 	{
 		"BlitzCommon.lib",
 		"BlitzSystem.lib",
+		"d3d11.lib",
+		"d3dx11.lib",
+		"libfbxsdk.lib",
 	}
 	
 	libdirs
@@ -204,15 +207,27 @@ project "BlitzRenderer"
 	filter "configurations:Debug"
 		defines ""
 		symbols "On"
+		libdirs
+		{
+			fbx_SDK_libPath_debug,
+		}
 		
 	filter "configurations:Release"
 		defines ""
 		optimize "On"
+		libdirs
+		{
+			fbx_SDK_libPath_release,
+		}
 		
 	filter "configurations:AssetProcessor"
 		defines ""
 		symbols "On"
 		optimize "On"
+		libdirs
+		{
+			fbx_SDK_libPath_release,
+		}
 
 		
 -----------------------------------------------------------------
@@ -333,16 +348,16 @@ project "FeatureTestGame"
 
 	files
 	{
-		"Game/%{prj.name}/Source/**.h",
-		"Game/%{prj.name}/Source/**.cpp",
+		"Games/%{prj.name}/Source/**.h",
+		"Games/%{prj.name}/Source/**.cpp",
 	}
 
 	includedirs
 	{
 		"Games/%{prj.name}/Source",
 		"External/spdlog/include",
-		"Engine/BlitzSystem",
-		"Engine/BlitzCommon",
+		"Engine/BlitzSystem/Source",
+		"Engine/BlitzCommon/Source",
 	}
 
 	links
